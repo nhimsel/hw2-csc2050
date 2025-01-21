@@ -19,11 +19,6 @@ public class Guesser extends Thread
                 Manager.setCurGuesser(guesserNo);
                 Manager.guessRandom();
             }
-            try
-            {
-                this.sleep(50);
-            }
-            catch(Exception e){}
         }
     }
     
