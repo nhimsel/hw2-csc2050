@@ -1,3 +1,5 @@
+
+
 public class Guesser extends Thread
 {
     int guesserNo;
@@ -12,7 +14,8 @@ public class Guesser extends Thread
     {
         if (Manager.myTurn(guesserNo))
         {
-            
+            Manager.setCurGuesser(guesserNo);
+            Manager.guessRandom();
         }
     }
     
