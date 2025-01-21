@@ -12,13 +12,18 @@ public class Guesser extends Thread
     @Override
     public void run()
     {
-        while (Manager.isSolved())
+        while (!Manager.isSolved())
         {
             if (Manager.myTurn(guesserNo))
             {
                 Manager.setCurGuesser(guesserNo);
                 Manager.guessRandom();
             }
+            try
+            {
+                this.sleep(500);
+            }
+            catch(Exception e){}
         }
     }
     

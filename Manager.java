@@ -14,10 +14,13 @@ public class Manager
         {
             magicNumber=num;
             magicNumberSet=true;
+
+            //debug
+            System.out.println("magic num = "+num);
         }
     }
 
-    public static void setCurGuesser(int s)
+    synchronized public static void setCurGuesser(int s)
     {
         curGuesser="Guesser "+s;
     }
@@ -27,7 +30,16 @@ public class Manager
         return isSolved;
     }
 
-    public static boolean myTurn(int val)
+    public static void checkSolved(int num)
+    {
+        isSolved=(num==magicNumber);
+        if (isSolved())
+        {
+            System.out.println("The solution has been guessed.\nIt took "+count+" tries.");
+        }
+    }
+
+    synchronized public static boolean myTurn(int val)
     {
         if (count%2==val)
         {
@@ -40,13 +52,13 @@ public class Manager
     public static int randomNum()
     {
         Random r = new Random();
-        return r.nextInt(100)+1;
+        return r.nextInt(10)+1;
     }
 
-    public static boolean guessRandom()
+    synchronized public static void guessRandom()
     {
         int num=randomNum();
         System.out.println(curGuesser+" guessed: "+num);
-        return num==magicNumber;
+        checkSolved(num);
     }
 }
