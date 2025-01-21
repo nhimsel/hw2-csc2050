@@ -14,9 +14,6 @@ public class Manager
         {
             magicNumber=num;
             magicNumberSet=true;
-
-            //debug
-            System.out.println("magic num = "+num);
         }
     }
 
