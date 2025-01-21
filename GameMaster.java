@@ -1,15 +1,16 @@
 public class GameMaster extends Thread
 {
-    private int magicNumber;
-
     GameMaster (int magicNumber)
     {
-        this.magicNumber=magicNumber;
+        Manager.setMagicNumber(magicNumber);
     }
 
     public void playGame()
     {
         //call 2 guesser threads, they alternate guesses until one of them gets it correct
+        Guesser g0 = new Guesser(0);
+        Guesser g1 = new Guesser(1);
+
         //do we want to allow duplicate guesses???
     }
 }
