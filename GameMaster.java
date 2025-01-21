@@ -10,6 +10,8 @@ public class GameMaster extends Thread
         //call 2 guesser threads, they alternate guesses until one of them gets it correct
         Guesser g0 = new Guesser(0);
         Guesser g1 = new Guesser(1);
+        g0.run();
+        g1.run();
 
         //do we want to allow duplicate guesses???
     }
