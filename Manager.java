@@ -6,6 +6,7 @@ public class Manager
     private static int magicNumber;
     private static boolean magicNumberSet=false;
     private static String curGuesser=null;
+    private static boolean isSolved=false;
 
     public static void setMagicNumber(int num)
     {
@@ -19,6 +20,11 @@ public class Manager
     public static void setCurGuesser(int s)
     {
         curGuesser="Guesser "+s;
+    }
+
+    public static boolean isSolved()
+    {
+        return isSolved;
     }
 
     public static boolean myTurn(int val)
