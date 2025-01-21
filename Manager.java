@@ -57,6 +57,8 @@ public class Manager
         if (!isSolved())
         {
             int num=randomNum();
+            //this print statement sometimes prints out of order due to a race condition, the guessing itself seems synchronized.
+            //i'm not sure how to fix it without using synchronize() and a lock
             System.out.println(curGuesser+" guessed: "+num);
             checkSolved(num);
         }

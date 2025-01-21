@@ -1,25 +1,34 @@
-
-
 public class Guesser extends Thread
 {
-    int guesserNo;
+    Object lock;
 
-    public Guesser(int guesserNo) 
+    private int guesserNo;
+    private int count;
+
+    public Guesser(int guesserNo, Object lock) 
     {
-        this.guesserNo = guesserNo;
+        this.guesserNo=guesserNo;
+        this.lock=lock;
     }
 
     @Override
     public void run()
     {
-        while (!Manager.isSolved())
+        synchronized (lock)
         {
-            if (Manager.myTurn(guesserNo))
+            while (!Manager.isSolved())
             {
-                Manager.setCurGuesser(guesserNo);
-                Manager.guessRandom();
+                lock.notify();
+                if (Manager.myTurn(guesserNo))
+                {
+                    Manager.setCurGuesser(guesserNo);
+                    Manager.guessRandom();
+                    count++;
+                }
+                try {lock.wait();} catch(Exception e){}
             }
+            lock.notify();
+            System.out.println("Guesser "+guesserNo+" took "+count+" tries.");
         }
     }
-    
 }

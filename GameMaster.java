@@ -7,8 +7,10 @@ public class GameMaster extends Thread
 
     public void playGame()
     {
-        Guesser g0 = new Guesser(0);
-        Guesser g1 = new Guesser(1);
+        Object lock = new Object(); 
+
+        Guesser g0 = new Guesser(0,lock);
+        Guesser g1 = new Guesser(1,lock);
         g0.start();
         g1.start();
     }
