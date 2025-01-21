@@ -35,7 +35,7 @@ public class Manager
         isSolved=(num==magicNumber);
         if (isSolved())
         {
-            System.out.println("The solution has been guessed.\nIt took "+count+" tries.");
+            System.out.println("The solution has been guessed by "+curGuesser+".\nIt took "+count+" tries.");
         }
     }
 
@@ -52,13 +52,16 @@ public class Manager
     public static int randomNum()
     {
         Random r = new Random();
-        return r.nextInt(10)+1;
+        return r.nextInt(100)+1;
     }
 
     synchronized public static void guessRandom()
     {
-        int num=randomNum();
-        System.out.println(curGuesser+" guessed: "+num);
-        checkSolved(num);
+        if (!isSolved())
+        {
+            int num=randomNum();
+            System.out.println(curGuesser+" guessed: "+num);
+            checkSolved(num);
+        }
     }
 }

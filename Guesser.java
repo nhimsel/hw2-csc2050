@@ -21,7 +21,7 @@ public class Guesser extends Thread
             }
             try
             {
-                this.sleep(500);
+                this.sleep(50);
             }
             catch(Exception e){}
         }

@@ -5,7 +5,7 @@ public class Driver
 	public static void main(String[] args) 
 	{
 	    Random r = new Random();
-	    int secretNumber = r.nextInt(10) + 1;
+	    int secretNumber = r.nextInt(100) + 1;
 		GameMaster gm = new GameMaster(secretNumber);
 		gm.playGame();
 	}
